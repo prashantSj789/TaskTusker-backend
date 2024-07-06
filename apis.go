@@ -64,7 +64,7 @@ func (s *APIServer) Run() {
 	router.HandleFunc("/getallorg",makemuxhandlefunc(s.handlegetallorganizations))
 	router.HandleFunc("/issue_card",makemuxhandlefunc(s.handlecreatecards))
 	router.HandleFunc("/getcard/{id}",makemuxhandlefunc(s.handlegetcardbyId))
-	router.HandleFunc("/getcard/{org}",makemuxhandlefunc(s.handlegetallcards))
+	router.HandleFunc("/getallcard/{org}",makemuxhandlefunc(s.handlegetallcards))
 	router.HandleFunc("/forwardcard/{id}",makemuxhandlefunc(s.handleforwardcard))
 	router.HandleFunc("/moveback/{id}",makemuxhandlefunc(s.handlemovebackcard))
 	router.HandleFunc("/deletecard",makemuxhandlefunc(s.handledeletecard))
