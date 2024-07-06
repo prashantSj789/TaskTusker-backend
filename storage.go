@@ -31,7 +31,7 @@ type storage interface{
   CreateComment(*Comment) error
 }
 func NewPostgressStore() (*PostgressStore,error){
-	conStr:= "user=postgres dbname=postgres host=localhost port=5432  password=go-jira-board sslmode=disable"
+	conStr:= "user=postgres dbname=postgres host=database-3.c5i8mwka8jer.us-east-1.rds.amazonaws.com port=5432  password=my-go-jira "
 	db, err:= sql.Open("postgres",conStr)
 	if err!=nil{
 		panic(err)

@@ -22,7 +22,7 @@ msg := []byte("To: "+email+ "\r\n" +
 
 "\r\n" +
 
-"http://192.168.1.7:8080/register?token="+token +"\r\n")
+"http://50.19.174.10:8080/register?token="+token +"\r\n")
 
 err := smtp.SendMail("smtp.gmail.com:587", auth, "singhprashant79072@gmail.com", to, msg)
 fmt.Printf("mail sent")
@@ -50,7 +50,7 @@ log.Fatal(err)
 	
 	"\r\n" +
 	
-	"http://192.168.1.7:8080/invite?token="+token +"\r\n")
+	"http://50.19.174.10:8080/invite?token="+token +"\r\n")
 	
 	err := smtp.SendMail("smtp.gmail.com:587", auth, "singhprashant79072@gmail.com", to, msg)
 
