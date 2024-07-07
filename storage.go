@@ -272,7 +272,7 @@ func (s *PostgressStore) UpdateCard(c *Card) error{
 	return nil
 }
 func (s *PostgressStore) DeleteCard(id int) error{
-	query:=`DELETE * from cards
+	query:=`DELETE from cards
 	where id=$1`
 	_,err:=s.db.Query(
 		query,

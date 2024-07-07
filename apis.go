@@ -67,7 +67,7 @@ func (s *APIServer) Run() {
 	router.HandleFunc("/getallcard/{org}",makemuxhandlefunc(s.handlegetallcards))
 	router.HandleFunc("/forwardcard/{id}",makemuxhandlefunc(s.handleforwardcard))
 	router.HandleFunc("/moveback/{id}",makemuxhandlefunc(s.handlemovebackcard))
-	router.HandleFunc("/deletecard",makemuxhandlefunc(s.handledeletecard))
+	router.HandleFunc("/deletecard/{id}",makemuxhandlefunc(s.handledeletecard))
 	router.HandleFunc("/createissue",makemuxhandlefunc(s.handlecreateissue))
 	router.HandleFunc("/issue/{org}",makemuxhandlefunc(s.handlegetallissues))
 	router.HandleFunc("/getissue/{id}",makemuxhandlefunc(s.handlegetissuebyid))
@@ -110,7 +110,10 @@ func (s *APIServer) handleregisteruser( w http.ResponseWriter, r *http.Request) 
    msg:= createuserMessage{
    Message: "User verification mail sent",
    }
-   SendMail(token,req.Email)
+   er:= SendMail(token,req.Email)
+   if er!=nil{
+	return er
+   }
    if err!=nil{
 	return fmt.Errorf("Error occured while generating the token")
 }

@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/smtp"
 )
 
-func SendMail(token string,email string) {
+func SendMail(token string,email string) error{
 
 // Choose auth method and set it up
 
@@ -28,10 +27,10 @@ err := smtp.SendMail("smtp.gmail.com:587", auth, "singhprashant79072@gmail.com",
 fmt.Printf("mail sent")
 if err != nil {
 
-log.Fatal(err)
+return fmt.Errorf("ERROR in mail verification  !!")
 
 }
-
+return nil
 }
 
   func SendInviteMail(token, from, email string) error{
