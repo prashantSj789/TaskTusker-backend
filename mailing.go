@@ -1,13 +1,13 @@
-package main
+ package main
 
-import (
+ import (
 	"fmt"
 	"net/smtp"
-)
+ )
 
-func SendMail(token string,email string) error{
+ func SendMail(token string,email string) error{
 
-// Choose auth method and set it up
+ // Choose auth method and set it up
 
  auth := smtp.PlainAuth("", "singhprashant79072@gmail.com", "woyd mwmr qorq cxif", "smtp.gmail.com")
 
@@ -26,7 +26,7 @@ func SendMail(token string,email string) error{
  err := smtp.SendMail("smtp.gmail.com:587", auth, "singhprashant79072@gmail.com", to, msg)
 
  return err
- 
+
  }
 
   func SendInviteMail(token, from, email string) error{
