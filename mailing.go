@@ -9,29 +9,25 @@ func SendMail(token string,email string) error{
 
 // Choose auth method and set it up
 
-auth := smtp.PlainAuth("", "singhprashant79072@gmail.com", "woyd mwmr qorq cxif", "smtp.gmail.com")
+ auth := smtp.PlainAuth("", "singhprashant79072@gmail.com", "woyd mwmr qorq cxif", "smtp.gmail.com")
 
-// Here we do it all: connect to our server, set up a message and send it
+ // Here we do it all: connect to our server, set up a message and send it
 
-to := []string{email}
+ to := []string{email}
 
-msg := []byte("To: "+email+ "\r\n" +
+ msg := []byte("To: "+email+ "\r\n" +
 
-"Subject: Verification  mail from TaskTusker\r\n" +
+ "Subject: Verification  mail from TaskTusker\r\n" +
 
-"\r\n" +
+ "\r\n" +
 
-"http://50.19.174.10:8080/register?token="+token +"\r\n")
+ "http://50.19.174.10:8080/register?token="+token +"\r\n")
 
-err := smtp.SendMail("smtp.gmail.com:587", auth, "singhprashant79072@gmail.com", to, msg)
-fmt.Printf("mail sent")
-if err != nil {
+ err := smtp.SendMail("smtp.gmail.com:587", auth, "singhprashant79072@gmail.com", to, msg)
 
-return fmt.Errorf("ERROR in mail verification  !!")
-
-}
-return nil
-}
+ return err
+ 
+ }
 
   func SendInviteMail(token, from, email string) error{
 

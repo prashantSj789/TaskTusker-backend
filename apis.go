@@ -110,13 +110,15 @@ func (s *APIServer) handleregisteruser( w http.ResponseWriter, r *http.Request) 
    msg:= createuserMessage{
    Message: "User verification mail sent",
    }
-   er:= SendMail(token,req.Email)
-   if er!=nil{
-	return er
-   }
+
    if err!=nil{
 	return fmt.Errorf("Error occured while generating the token")
-}
+   }
+   err = SendMail(token,req.Email)
+   if err!=nil{
+	return err
+   }
+  
    return WriteJSON(w,http.StatusOK,msg)
 }
 return nil
