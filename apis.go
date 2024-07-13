@@ -266,7 +266,10 @@ func (s *APIServer) handlegetallorganizations(w http.ResponseWriter,r *http.Requ
 	if err!=nil{
 		return err
 	}
-	return WriteJSON(w,http.StatusOK,org)
+	resp:=GetAllOrg{
+		Organizations: org,
+	}
+	return WriteJSON(w,http.StatusOK,resp)
 }
 func (s *APIServer) handlecreatecards(w http.ResponseWriter,r *http.Request) error{
 	if r.Method!="POST"{
